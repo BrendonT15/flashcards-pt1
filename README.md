@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented required features:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-![ComputerAlgorithms](https://github.com/user-attachments/assets/62b99dcd-4728-43c5-bc0c-8f266bb009a0)
+![ComputerAlgorithms](https://github.com/BrendonT15/flashcards-pt1/blob/master/ComputerAlgorithms.gif)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
