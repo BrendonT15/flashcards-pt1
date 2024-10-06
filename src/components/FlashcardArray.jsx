@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react'
 
 import Flashcards from './Flashcards.jsx'
+import AnswerForm from './AnswerForm.jsx'
 
 const arr = [
     {id: 1, question: "What is the time complexity of merge sort?", answer: "O(n log n)", difficulty: "easy"}, 
@@ -21,21 +22,52 @@ const FlashcardArray = ({setNumberOfCards}) => {
     })
 
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [history, setHistory] = useState([0])
+    const [feedback, setFeedback] = useState('')
+    const [allowFlip, setAllowFlip] = useState(false)
+
+    const handleSubmitAnswer = (userAnswer) => {
+        const correctAnswer = arr[currentIndex].answer;
+        if (userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+            setFeedback("Correct!")
+        }
+        else {
+            setFeedback("Incorrect! Try again.")
+        }
+        setAllowFlip(true)
+    }
 
     const handleNextIndex = () => {
+        setAllowFlip(false)
         setCurrentIndex((prevIndex) => {
             let randomIndex;
             do {
                 randomIndex = Math.floor(Math.random() * arr.length);
             } while (randomIndex === prevIndex)
-            return randomIndex
-        })
-    }
+    
+            setHistory((prevHistory) => [...prevHistory, prevIndex]);
+            return randomIndex;
+        });
+    };
+    
+    const handlePrevIndex = () => {
+        setAllowFlip(false)
+        setHistory((prevHistory) => {
+            if (prevHistory.length > 0) {
+                const lastIndex = prevHistory.pop();
+                setCurrentIndex(lastIndex);
+            }
+            return [...prevHistory]; 
+        });
+    };
 
     return(
         <div className="FlashcardArray">
-            <Flashcards question={arr[currentIndex].question} answer={arr[currentIndex].answer} difficulty={arr[currentIndex].difficulty}/>
+            <Flashcards question={arr[currentIndex].question} answer={arr[currentIndex].answer} difficulty={arr[currentIndex].difficulty} allowFlip={allowFlip}/>
+            <button onClick={handlePrevIndex}>&lt;</button>
             <button onClick={handleNextIndex}>&gt;</button>
+            <p>{feedback}</p>
+            <AnswerForm onSubmitAnswer={handleSubmitAnswer}/>
         </div>
     )
 }

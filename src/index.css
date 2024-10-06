@@ -65,3 +65,25 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #3c66c0; /* Green border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px;
+  background-color: #f8f8f8; /* Light grey background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  /* Add a subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+  border-color: #3c66c0; /* Darker green on focus */
+  outline: none;
+  /* Add a shadow when the input is focused */
+  box-shadow: 0 0 8px rgba(60, 93, 184, 0.8); /* Green glow */
+}

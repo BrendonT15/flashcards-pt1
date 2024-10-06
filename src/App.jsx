@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css'
 import FlashcardArray from './components/FlashcardArray.jsx'
+import AnswerForm from './components/AnswerForm.jsx'
 
 const App = () => {
   const [numberOfCards, setNumberOfCards] = useState(0);
