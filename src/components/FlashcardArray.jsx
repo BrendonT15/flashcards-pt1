@@ -25,6 +25,7 @@ const FlashcardArray = ({setNumberOfCards}) => {
     const [history, setHistory] = useState([0])
     const [feedback, setFeedback] = useState('')
     const [allowFlip, setAllowFlip] = useState(false)
+    const [showQuestion, setShowQuestion] = useState(false)
 
     const handleSubmitAnswer = (userAnswer) => {
         const correctAnswer = arr[currentIndex].answer;
@@ -38,7 +39,9 @@ const FlashcardArray = ({setNumberOfCards}) => {
     }
 
     const handleNextIndex = () => {
-        setAllowFlip(false)
+        setAllowFlip(false);
+        setShowQuestion(false);
+        setTimeout(() => setShowQuestion(true), 0);
         setCurrentIndex((prevIndex) => {
             let randomIndex;
             do {
@@ -51,7 +54,9 @@ const FlashcardArray = ({setNumberOfCards}) => {
     };
     
     const handlePrevIndex = () => {
-        setAllowFlip(false)
+        setAllowFlip(false);
+        setShowQuestion(false);
+        setTimeout(() => setShowQuestion(true), 0);
         setHistory((prevHistory) => {
             if (prevHistory.length > 0) {
                 const lastIndex = prevHistory.pop();
@@ -63,7 +68,7 @@ const FlashcardArray = ({setNumberOfCards}) => {
 
     return(
         <div className="FlashcardArray">
-            <Flashcards question={arr[currentIndex].question} answer={arr[currentIndex].answer} difficulty={arr[currentIndex].difficulty} allowFlip={allowFlip}/>
+            <Flashcards question={arr[currentIndex].question} answer={arr[currentIndex].answer} difficulty={arr[currentIndex].difficulty} allowFlip={allowFlip} showQuestion={showQuestion}/>
             <button onClick={handlePrevIndex}>&lt;</button>
             <button onClick={handleNextIndex}>&gt;</button>
             <p>{feedback}</p>

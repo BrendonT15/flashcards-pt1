@@ -1,15 +1,19 @@
-import {React, useState} from 'react'
+import { React, useState, useEffect } from 'react';
 
-const Flashcards = ({question, answer, difficulty, allowFlip}) => {
-    const [flip, setFlip] = useState(false)
+const Flashcards = ({ question, answer, difficulty, allowFlip, showQuestion }) => {
+    const [flip, setFlip] = useState(false);
+
+    useEffect(() => {
+        setFlip(false);  
+    }, [showQuestion]);
 
     const handleFlip = () => {
-        if (allowFlip == true) {
-            setFlip(!flip);
+        if (allowFlip) {
+            setFlip(!flip);  
         }
-    }
+    };
 
-    return(
+    return (
         <div className="Flashcards" onClick={handleFlip}>
             {flip ? (
                 <div className={"container " + difficulty}>
@@ -21,7 +25,7 @@ const Flashcards = ({question, answer, difficulty, allowFlip}) => {
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
 export default Flashcards;
