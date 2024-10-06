@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![ComputerAlgorithmsPT2](https://github.com/user-attachments/assets/65aca251-1de3-482f-873d-b83a3c44f778)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
